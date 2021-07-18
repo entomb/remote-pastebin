@@ -46,7 +46,7 @@ const router = function (req, res) {
       console.log(parse(data))
       console.log(line('cut here'))
       res.writeHead(302, {
-        'Location': req.headers.host
+        'Location': '/'
       });
       res.end();
     });
