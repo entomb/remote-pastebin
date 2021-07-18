@@ -40,9 +40,9 @@
     <div class="pm-container">
       <h1>Clipboard</h1>
       <small> check the console on the host machine </small>
-      <form method="POST" action="?POST">
+      <form method="POST">
 
-        <label for="paster">Paste your Clipboard here</label>
+        <label for="paster">Paste your stuff here</label>
         <textarea name="paster" id="paster" onClick="selectall();"></textarea>
         <button id="btn" type="submit" >Submit</button>
       </form>

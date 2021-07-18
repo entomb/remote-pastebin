@@ -3,8 +3,8 @@ const fs = require('fs');
 const index = fs.readFileSync(__dirname + '/index.tpl').toString();
 
 const config = {
-  host: process.env.PORT || 'localhost',
-  port: process.env.PORT || '9099'
+  host: process.env.HOST || 'localhost',
+  port: process.env.PORT || '8080'
 }
 
 function line(str) {
@@ -22,7 +22,6 @@ function parse(str) {
   return [str]
     .map(str => str.replace('paster=', ''))
     .map(str => str.replace(/\+/g, ' '))
-    .map(decodeURI)
     .map(decodeEntities)
     .map(unescape)
     .join("")
@@ -30,6 +29,7 @@ function parse(str) {
 
 
 const router = function (req, res) {
+  console.info(`${new Date().toISOString()} < ${req.method} < ${req.url}`)
   if (req.method === 'GET' && req.url === '/') {
     res.writeHead(200);
     res.end(index);
@@ -37,7 +37,6 @@ const router = function (req, res) {
   }
 
   if (req.method === 'POST') {
-    console.info(`${new Date().toISOString()} < ${req.method} < ${req.url}`)
     const body = [];
     req.on('data', (chunk) => {
       body.push(chunk);
