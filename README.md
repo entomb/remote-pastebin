@@ -1,3 +1,3 @@
 # remote-pastebin
 
-simple no dependency http server that logs POST requests. thats it.
+simple zero-dependency http server that logs POST requests. that's it.
